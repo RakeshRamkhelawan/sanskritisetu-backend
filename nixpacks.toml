@@ -1,11 +1,14 @@
-[phases.setup]
-nixPkgs = ["python311", "postgresql"]
+  [phases.setup]
+  nixPkgs = ["python311", "python311Packages.pip", "postgresql"]
 
-[phases.install]
-cmds = ["pip install -r requirements.txt"]
+  [phases.install]
+  cmds = ["python -m pip install --upgrade pip", "python -m pip install -r requirements.txt"]
 
-[phases.build]
-cmds = ["echo 'Build complete'"]
+  [phases.build]
+  cmds = ["echo 'Build complete'"]
 
-[start]
-cmd = "uvicorn core.api.main:app --host 0.0.0.0 --port $PORT"
+  [start]
+  cmd = "uvicorn core.api.main:app --host 0.0.0.0 --port $PORT"
+
+  5. Commit message: "Fix nixpacks pip installation"
+  6. Klik "Commit changes"
